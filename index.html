@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>API SHEET </TITLE>
+<script src="jquery-2.2.2.min.js"></script>
+<script src="jquery.serialize-object.min.js"></script>
+</HEAD>
+<BODY>
+<form id="test-form">
+  
+  <div>
+    <label>Field 1</label>
+    <input type="text" name="Nombre" placeholder="Field 1"/>
+  </div>
+
+  <div>
+    <label>Field 2</label>
+    <input type="text" name="Apellidos" placeholder="Field 2"/>
+  </div>
+  
+  <div>
+    <label>Field 3</label>
+    <input type="text" name="Curso" placeholder="Field 3"/>
+  </div>
+  
+  <div>
+    <label>Field 4</label>
+    <input type="text" name="Otro" placeholder="Field 4"/>
+  </div>
+
+  <div>
+    <button type="submit"id="submit-form">Enviar</button>
+  </div>
+
+</form>
+<script>
+var $form = $('form#test-form'),
+    url = 'https://script.google.com/macros/s/AKfycbwjt4ShMsw-TeB6vOR5QG1KkOhPRI4ObWhooV63jlqxfpOSoGQ/exec'
+
+    
+    // el navegador está conectado a la red
+
+$('#submit-form').on('click', function(e) {
+  
+  e.preventDefault();
+  
+
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    // do something
+    alert('Se envio Correctamente')
+  );
+
+
+})
+
+    
+</script>
+</body>
+</html>
